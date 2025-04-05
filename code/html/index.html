@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="../css/homeDes.css">
+        <title>Home</title>
+    </head>
+    <body> 
+        <div class="navbar">
+            <ul>
+                <li><a href="index.html"><button>Home</button></a></li>
+                <li><a href="insights.html"><button>Insights</button></a></li>
+                <li><a href="transactions.html"><button>Transactions</button></a></li>
+                <li><a href="savingsGoals.html"><button>Savings Goals</button></a></li>
+                <li><a href="settings.html"><button>Settings</button></a></li>
+            </ul>
+        </div> <!--Side banner-->
+
+        <div class="mainView">
+            <div class="topbar">
+                <h3 id="balance">Balance<br><label id="tot_bal">$0.00</label></h3>
+                <h3 id="income">Income<br><label id="tot_inc">$0.00</label></h3>
+                <h3 id="expense">Expenses<br><label id="tot_exp">$0.00</label></h3>
+                <progress id="total_budget_prog" value="10" max="100">100%</progress>
+                <label id="bud_disp">$
+                    <span id="remaining_budget">0.00</span> left out of $
+                    <span id="total_budget">0.00</span> budget
+                </label>            
+            </div> <!--Top Banner-->
+            <hr class="dashed">
+            <div class="incomeExpense">
+                <div class="income_bar">
+                    <h2>Income</h2>
+                    <p>You don't have any income for this time period. Add one here.</p>
+                    <table id="income_table" border="1">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Cat.Icon</th>
+                                <th>Category</th>
+                                <th>Title</th>
+                                <th>Date</th>
+                                <th>Repeating</th>
+                                <th>Account Type</th>
+                                <th>Paid</th>
+                                <th>Amount</th>
+                            </tr>
+                          </thead>
+                          <tbody id="income_table_body">
+                            <!-- Leaderboard rows will go here -->
+                          </tbody>
+                    </table>
+                </div> <!--Income Section-->
+
+                <div class="expenses_bar">
+                    <h2>Expenses</h2>
+                    <p>You don't have any expenses for this time period. Add one here.</p>
+                    <table id="expense_table" border="1">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Cat.Icon</th>
+                                <th>Category</th>
+                                <th>Title</th>
+                                <th>Date</th>
+                                <th>Repeating</th>
+                                <th>Account Type</th>
+                                <th>Paid</th>
+                                <th>Amount</th>
+                            </tr>
+                          </thead>
+                          <tbody id="expense_table_body">
+                            <!-- Leaderboard rows will go here -->
+                          </tbody>
+                    </table>
+                </div> <!--Expenses Section-->
+
+                <div class="budget_manip">
+                    <button>Add Budget</button>
+                </div> <!--Add/Edit Budget Section-->
+            </div> <!--Income/Expense-->
+            
+            <div class="add_stuff">
+                <button id="add_but">+</button>
+                <script>
+                    $('#add_but').click(function(){
+                        $('.mainView').toggle();
+                        $('.newTransactionView').toggle();
+                    });
+                </script>
+            </div> <!--Add Income/Expenses Section-->
+        </div>
+
+        <div class="newTransactionView" style="display: none;">
+            <div>
+                <button id="x_but">X</button>
+                <script>
+                    $('#x_but').click(function(){
+                        $('.newTransactionView').toggle();
+                        $('.mainView').toggle();
+                    });
+                </script>
+                <h2>NEW TRANSACTION</h2>
+                
+            </div> <!--top bar-->
+            <form>
+                <input type="submit" value="save">
+                <select id="transactionType"><option value="income">Income</option><option value="expense">Expense</option></select>
+                <ul>
+                    <li><label>$<input type="number" placeholder="0.00"></label></li>
+                    <li><Label>Category <select>
+                        <option value="salary">Salary</option><option value="gift">Gift</option>
+                        <option value="groceries">Groceries</option><option value="investments">Investments</option>
+                        <option value="gas">Gas</option><option value="savings">Savings</option>
+                        <option value="rent">Rent</option><option value="entertainment">Entertainment</option>
+                        <option value="gym">Gym</option><option value="coffee">Coffee</option>
+                        <option value="restaurant">Restaurant</option><option value="bills">Bills</option>
+                        <option value="vacation">Vacation</option><option value="pub_transp">Public Transport</option>
+                        <option value="travel">Travel</option><option value="school">School</option>
+                    </select></label></li>
+                    <li><label>Title <input type="text"></label></li>
+                    <li><label>Date <input type="date"></label></li>
+                    <li><label>Account Type </label></li>
+                    <li><label>Repeating <select>
+                        <option value="never">Never</option><option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option><option value="biweekly">Biweekly</option>
+                        <option value="monthly">Monthly</option><option value="quarterly">Quarterly</option>
+                        <option value="yearly">Yearly</option>
+                    </select></label></li>
+                    <li><label>Paid <input type="checkbox"></label></li>
+                    <li><input type="text" placeholder="Notes..."></li>
+                </ul>
+                
+            </form>
+        </div>
+    </body>
+</html>
