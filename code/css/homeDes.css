@@ -8,12 +8,31 @@
 
 /*00: Variables*/
 :root{
-    --light-mode-sidebar-color: rgb(79, 79, 79);
-    --dark-mode-sdebar-color: rgb(193, 193, 193);
+    --light-mode-sidebar-color: #d9d9d9;
+    --dark-mode-sidebar-color: #919191;
     --light-mode-background: rgb(255, 255, 255);
-    --dark-mode-background: rgb(0,0,0);
+    --dark-mode-background: #2e2e2e;
     --system-theme-1: #ff5757;
     --system-theme-2: #ff66c4;
+
+    /*icons*/
+    --salary-icon: url(/media/icons/salary.png);
+    --gift-icon: url(/media/icons/gift.png);
+    --groceries-icon: url(/media/icons/grocery.png);
+    --investments-icon: url(/media/icons/investment.png);
+    --gas-icon: url(/media/icons/gas.png);
+    --savings-icon: url(/media/icons/savings.png);
+    --rent-icon: url(/media/icons/rent.png);
+    --entertainment-icon: url(/media/icons/entertainment.png);
+    --gym-icon: url(/media/icons/gym.png);
+    --coffee-icon: url(/media/icons/coffee.png);
+    --restaurant-icon: url(/media/icons/restaurant.png);
+    --bills-icon: url(/media/icons/bills.png);
+    --vacation-icon: url(/media/icons/vacation.png);
+    --pubTrans-icon: url(/media/icons/pubTrans.png);
+    --travel-icon: url(/media/icons/travel.png);
+    --school-icon: url(/media/icons/school.png);
+
 }
 
 /*01: Layouts*/
@@ -175,7 +194,7 @@ div.navbar button:hover{
 }
 
 div.topbar{
-
+    background-color: rgb(225, 225, 225);
 }
 
 div.topbar h3{

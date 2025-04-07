@@ -17,9 +17,94 @@
                 <li><a href="settings.html"><button>Settings</button></a></li>
             </ul>
         </div> <!--Side banner-->
-
-
-
         
+        <div class="transactionInfo">
+            <div class="tr_topbar">
+                <button onclick="sortTableByDate()">Order By Amount (Greatest)</button>
+                <button>Order by Date (Month, Day)</button>
+                <input type="date">
+                <button id="exportTr">Print</button>
+            </div><!--Topbar-->
+
+            <table id="transactionTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Icon</th>
+                        <th>Category</th>
+                        <th>Title</th>
+                        <th>Repeating</th>
+                        <th>Account Type</th>
+                        <th>Paid</th>
+                        <th>Amount</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="transactionTableBody">
+                    <!--Transactions from form will go here-->
+                </tbody>
+            </table>
+        </div><!--Transaction Display Section-->
+
+        <div class="addmore">
+            <button id="add_tr">+</button>
+            <script>
+                $('#add_tr').click(function(){
+                    $('.transactionInfo').toggle();
+                    $('.newTransactionView2').toggle();
+                });
+            </script>
+        </div><!--Add Transaction Button-->
+        
+        <div class="newTransactionView2" style="display: none;">
+            <div>
+                <button id="x_but">X</button>
+                <script>
+                    $('#x_but').click(function(){
+                        $('.newTransactionView2').toggle();
+                        $('.transactionInfo').toggle();
+                    });
+                </script>
+                <h2>NEW TRANSACTION</h2>
+            </div> <!--top bar-->
+            <form>
+                <input type="submit" value="save">
+                <select id="transactionType"><option value="income">Income</option><option value="expense">Expense</option></select>
+                <ul>
+                    <li><label>$<input type="number" id="amount" placeholder="0.00"></label></li>
+                    <li><Label>Category <select id="icon">
+                        <option value="salary">Salary</option><option value="gift">Gift</option>
+                        <option value="groceries">Groceries</option><option value="investments">Investments</option>
+                        <option value="gas">Gas</option><option value="savings">Savings</option>
+                        <option value="rent">Rent</option><option value="entertainment">Entertainment</option>
+                        <option value="gym">Gym</option><option value="coffee">Coffee</option>
+                        <option value="restaurant">Restaurant</option><option value="bills">Bills</option>
+                        <option value="vacation">Vacation</option><option value="pub_trans">Public Transport</option>
+                        <option value="travel">Travel</option><option value="school">School</option>
+                    </select></label></li>
+                    <li><label>Title <input type="text" id="title"></label></li>
+                    <li><label>Date <input type="date" id="date"></label></li>
+                    <li><label>Account Type <select id="accountType">
+                        <option value="credit">Credit</option>
+                        <option value="debit">Debit</option>
+                        <option value="cash">Cash</option>
+                        <option value="check">Check</option>
+                    </select></label></li>
+                    <li><label>Repeating <select id="repeat">
+                        <option value="never">Never</option><option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option><option value="biweekly">Biweekly</option>
+                        <option value="monthly">Monthly</option><option value="quarterly">Quarterly</option>
+                        <option value="yearly">Yearly</option>
+                    </select></label></li>
+                    <li><label>Paid <input type="checkbox" id="paidOp"></label></li>
+                </ul>
+                
+            </form>
+        </div><!--Transaction Creation Section-->
+
+        <script src="../javascript/theMaths.js"></script>
+
     </body>
 </html>

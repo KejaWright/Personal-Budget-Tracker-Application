@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8" content="width=device-width, initial-scale=1.0">
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <link rel="stylesheet" href="../css/insightDes.css">
 
         <title>Insights</title>
@@ -18,9 +19,56 @@
             </ul>
         </div> <!--Side banner-->
 
-        <div></div> <!--Top Bar-->
-        <div></div> <!--Expenses View-->
-        <div></div> <!--Income View-->
-        <hr class="dashed">
+        <div class="ins_topbar">
+            <input type="month">
+            <button>Expenses</button>
+            <button>Income</button>
+            <button>Print</button>
+        </div> <!--Top Bar-->
+
+        <div class="exp_view">
+            <div class="exp_chart">
+                <!--pie chart-->
+            </div>
+            <hr class="dashed">
+            <div>
+                <h2>Expenses</h2>
+                <table id="exp_overview">
+                    <thead>
+                        <tr>
+                            <th>Icon</th>
+                            <th>Category</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody id="exp_overview_body">
+                        <!--info from overall expenses will be here-->
+                    </tbody>
+                </table>
+            </div>
+        </div> <!--Expenses View-->
+        
+        <div class="inc_view">
+            <div class="inc_chart">
+                <!--pie chart-->
+            </div>
+            <hr class="dashed">
+            <div>
+                <h2>Income</h2>
+                <table>
+                    <thead id="inc_overview">
+                        <tr>
+                            <th>Icon</th>
+                            <th>Category</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inc_overview_body">
+                        <!--info from overall income will be here-->
+                    </tbody>
+                </table>
+            </div>
+        </div> <!--Income View-->
+        <script src="../javascript/theMaths.js"></script>
     </body>
 </html>

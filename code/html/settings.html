@@ -17,8 +17,19 @@
                 <li><a href="settings.html"><button>Settings</button></a></li>
             </ul>
         </div> <!--Side banner-->
+
+        <div class="dark_mode_sec">
+            <h3>Dark Mode<span><input type="checkbox" id="dark_mode" value="yes"></span></h3>
+            <h3>System Theme<span><input type="color" id="main_color"><input type="color" id="acc_color"></span></h3>
+            <button onclick="applyColorChange()">Save Changes</button>
+            <button onclick="localStorage.clear(); location.reload();">Reset Settings</button>
+        </div> <!--Color Mode-->
         
-        <div></div> <!--Color Mode-->
-        <div></div> <!--Clearing Section-->
+        <div class="clear_sec">
+            <h3>Clear All Expenses<span><input type="button" value="DELETE"></span></h3>
+            <h3>Clear All Income<span><input type="button" value="DELETE"></span></h3>
+            <h3>Clear All Goals<span><input type="button" value="DELETE"></span></h3>
+        </div> <!--Clearing Section-->
+        <script src="../javascript/theMaths.js"></script>
     </body>
 </html>

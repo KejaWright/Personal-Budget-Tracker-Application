@@ -1,0 +1,86 @@
+/*style file created by us
+00: CSS Variables
+01: Layouts
+02: Color
+03: Font
+04: Nice Decoration
+*/
+
+/*00: Variables*/
+:root{
+    --light-mode-sidebar-color: #d9d9d9;
+    --dark-mode-sidebar-color: #919191;
+    --light-mode-background: rgb(255, 255, 255);
+    --dark-mode-background: #2e2e2e;
+    --system-theme-1: #ff5757;
+    --system-theme-2: #ff66c4;
+    
+    /*icons*/
+    --salary-icon: url(/media/icons/salary.png);
+    --gift-icon: url(/media/icons/gift.png);
+    --groceries-icon: url(/media/icons/grocery.png);
+    --investments-icon: url(/media/icons/investment.png);
+    --gas-icon: url(/media/icons/gas.png);
+    --savings-icon: url(/media/icons/salary.png);
+    --rent-icon: url(/media/icons/rent.png);
+    --entertainment-icon: url(/media/icons/entertainment.png);
+    --gym-icon: url(/media/icons/gym.png);
+    --coffee-icon: url(/media/icons/coffee.png);
+    --restaurant-icon: url(/media/icons/restaurant.png);
+    --bills-icon: url(/media/icons/bills.png);
+    --vacation-icon: url(/media/icons/vacation.png);
+    --pubTrans-icon: url(/media/icons/pubTrans.png);
+    --travel-icon: url(/media/icons/travel.png);
+    --school-icon: url(/media/icons/school.png);
+
+}
+
+/*01: Layouts*/
+div.navbar{
+    position: fixed;
+    left:0%;
+    top: 0%;
+    padding: 0;
+    width: 25%;
+    height: 100%;
+}
+
+div.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    left:0%;
+    padding: 10%;
+    width: 80%;
+    height: 100%;
+}
+
+div.navbar li{
+    position: relative;
+    height: 20%;
+}
+
+div.navbar button{
+    position: relative;
+    width:100%;
+    height: 60%;
+    border-radius: 10px;
+}
+
+/*02: Color*/
+body{
+    background-color: var(--light-mode-background);
+}
+
+div.navbar{
+    background-color: var(--light-mode-sidebar-color);
+}
+
+div.navbar button{
+    background-color: var(--system-theme-1);
+    border-style: none;
+}
+
+div.navbar button:hover{
+    font-size: 1.2em;
+    background-color: var(--system-theme-2);
+}
