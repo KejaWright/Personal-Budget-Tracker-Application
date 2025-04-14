@@ -12,6 +12,8 @@
     --dark-mode-sidebar-color: #919191;
     --light-mode-background: rgb(255, 255, 255);
     --dark-mode-background: #2e2e2e;
+    --light-mode-font: black;
+    --dark-mode-font: white;
     --system-theme-1: #ff5757;
     --system-theme-2: #ff66c4;
     

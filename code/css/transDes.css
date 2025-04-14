@@ -12,6 +12,8 @@
     --dark-mode-sidebar-color: #919191;
     --light-mode-background: rgb(255, 255, 255);
     --dark-mode-background: #2e2e2e;
+    --light-mode-font: black;
+    --dark-mode-font: white;
     --system-theme-1: #ff5757;
     --system-theme-2: #ff66c4;
     
@@ -78,6 +80,8 @@ div.tr_topbar{
     padding:1%;
     left:26%;
     top:10%;
+    width: 70%;
+    text-align: left;
 }
 
 div.newTransactionView2{
@@ -124,4 +128,22 @@ div.navbar button:hover{
 
 div.tr_topbar{
     background-color: grey;
+}
+
+th, td{
+    border-bottom: 2px solid var(--system-theme-1);
+}
+
+td{
+    padding: 10px;
+}
+
+tr:hover{
+    background-color: var(--system-theme-2);
+}
+
+
+/*03: Font*/
+div.newTransactionView2, #transactionTable{
+    color: var(--light-mode-font);
 }
