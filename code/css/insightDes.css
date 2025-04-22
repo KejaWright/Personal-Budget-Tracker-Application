@@ -1,0 +1,216 @@
+/*style file created by us
+00: CSS Variables
+01: Layouts
+02: Color
+03: Font
+04: Nice Decoration
+*/
+
+/*00: Variables*/
+:root{
+    --light-mode-sidebar-color: #d9d9d9;
+    --dark-mode-sidebar-color: #919191;
+    --light-mode-background: rgb(255, 255, 255);
+    --dark-mode-background: #2e2e2e;
+    --light-mode-font: black;
+    --dark-mode-font: white;
+    --system-theme-1: #ff5757;
+    --system-theme-2: #ff66c4;
+}
+
+/*01: Layouts*/
+div.navbar{
+    position: fixed;
+    left:0%;
+    top: 0%;
+    padding: 0;
+    width: 25%;
+    height: 100%;
+}
+
+div.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    left:0%;
+    padding: 10%;
+    width: 80%;
+    height: 100%;
+}
+
+div.navbar li{
+    position: relative;
+    height: 20%;
+}
+
+div.navbar button{
+    position: relative;
+    width:100%;
+    height: 60%;
+    border-radius: 10px;
+}
+
+div.ins_topbar{
+    position: fixed;
+    left: 26%;
+    width:73%;
+    height:10%;
+    button{
+        position:relative;
+        top: 15%;
+        left: 5%;
+        width: 30%;
+        height: 50px;   
+    }
+    button:hover{
+            background-color: var(--system-theme-1);
+        }
+}
+
+div.exp_view{
+    position:fixed;
+    padding:2%;
+    top:12%;
+    left:26%;
+    width:69%;
+    height: 78%;
+}
+
+div.inc_view{
+    position: fixed;
+    padding:2%;
+    top:12%;
+    left:26%;
+    width: 69%;
+    height:78%;
+}
+
+hr{
+    position:relative;
+    top:5%;
+}
+
+#incomeChart {
+    width: 100%;
+    height: 50px; /* or whatever height you want */
+    max-height: 300px;
+}
+
+#inc_info{
+    position: relative;
+    table{
+        text-align: left;
+        width:100%;
+    }
+}
+
+.scrollable-table1, .scrollable-table2{
+    max-height: 150px; /* Set the height limit before scrolling kicks in */
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: block;
+}
+
+#expenseChart {
+    width: 100%;
+    height: 50px; /* or whatever height you want */
+    max-height: 300px;
+}
+
+#exp_info{
+    position: relative;
+    table{
+        text-align: left;
+        width:100%;
+    }
+}
+
+#inc_overview, #exp_overview {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#inc_overview th, #inc_overview td, #exp_overview th, #exp_overview td {
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid #000;
+}
+
+#inc_overview thead th, #exp_overview thead th{
+    display:none;
+    position: sticky;
+    top: 0;
+    background-color: white; /* or match your theme */
+    z-index: 1;
+}
+
+
+/*02: Color*/
+body{
+    background-color: var(--light-mode-background);
+}
+
+div.navbar{
+    background-color: var(--light-mode-sidebar-color);
+}
+
+div.navbar button{
+    background-color: var(--system-theme-1);
+    border-style: none;
+}
+
+div.navbar button:hover{
+    font-size: 2.2em;
+    background-color: var(--system-theme-2);
+}
+
+div.ins_topbar{
+    background-color: #919191;
+}
+
+div.exp_view{
+    background-color: var(--system-theme-2);
+}
+
+div.inc_view{
+    background-color: var(--system-theme-1);
+}
+
+/*03: font*/
+div.navbar button{
+    font-family: "Outfit", sans-serif;
+    font-weight: 600;
+    font-size: 2em;
+}
+
+#inc_info{
+    h2{
+        font-family: "Pacifico", sans-serif;
+        font-size: 2.3em;
+    }
+    #inc_overview{
+        font-family: "Outfit", sans-serif;
+        font-weight: 600;
+    }
+    tbody{
+        font-family: "Outfit", sans-serif;
+        font-weight: 400;
+        font-size: 2em;
+    }
+}
+
+#exp_info{
+    h2{
+        font-family: "Pacifico", sans-serif;
+        font-size: 2.3em;
+    }
+    #exp_overview{
+        font-family: "Outfit", sans-serif;
+        font-weight: 600;
+
+    }
+    tbody{
+        font-family: "Outfit", sans-serif;
+        font-weight: 400;
+        font-size: 2em;
+    }
+}

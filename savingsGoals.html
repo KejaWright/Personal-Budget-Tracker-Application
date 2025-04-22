@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="./code/css/savingDes.css">
+        <!--Styles-->
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Pacifico&display=swap');
+        </style>
+
+        <title>Savings Goals</title>
+    </head>
+    <body> 
+        <div class="navbar">
+            <ul>
+                <li><a href="index.html"><button>Home</button></a></li>
+                <li><a href="insights.html"><button>Insights</button></a></li>
+                <li><a href="transactions.html"><button>Transactions</button></a></li>
+                <li><a href="savingsGoals.html"><button>Savings Goals</button></a></li>
+                <li><a href="settings.html"><button>Settings</button></a></li>
+            </ul>
+        </div> <!--Side banner-->
+
+        <div class="goals_section">
+            <h3 id="placeholder">No Goals Yet...Add Them Here</h3>
+            <script>
+                $('#placeholder').click(function(){
+                    $('.goals_section').toggle();
+                    $('.newgoalview').toggle();
+                });
+            </script>
+            <!--Add goals here; should be a section with a table-->
+
+            <div class="add_stuff">
+                <button id="add_but">+</button>
+                <script>
+                    $('#add_but').click(function(){
+                        $('.goals_section').toggle();
+                        $('.newgoalview').toggle();
+                    });
+                </script>
+            </div><!--Add Goals--> 
+        </div><!--Saving Goals Area-->
+
+        <div class="newgoalview" style="display: none;">
+            <button id="close">x</button>
+            <script>
+                $('#close').click(function(){
+                    $('.goals_section').toggle();
+                    $('.newgoalview').toggle();
+                });
+            </script>
+            <h2>Make a New Savings Goal!</h2>
+            <form>
+                <label>Create a goal category: <input type="text" id="goal_cat" placeholder="Example: Cosplay" required></label>
+                <label>Enter a goal name: <input type="text" id="goal_name" placeholder="Example: Black fabric" required></label>
+                <label>Enter a goal amount ($): <input type="number" id="goal_am" placeholder="0.00" step="0.01" required></label>
+                <input type="submit" value="Create Goal" id="goal_add">
+            </form>
+        </div><!--Make a new goal here-->
+
+        <script src="./code/javascript/decorativeScript.js"></script>
+        <script src="./code/javascript/savingGoalsScript.js"></script>
+
+    </body>
+</html>

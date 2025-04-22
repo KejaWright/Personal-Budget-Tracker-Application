@@ -1,0 +1,169 @@
+/*style file created by us
+00: CSS Variables
+01: Layouts
+02: Color
+03: Font
+04: Nice Decoration
+*/
+
+/*00: Variables*/
+:root{
+    --light-mode-sidebar-color: #d9d9d9;
+    --dark-mode-sidebar-color: #919191;
+    --light-mode-background: rgb(255, 255, 255);
+    --dark-mode-background: #2e2e2e;
+    --light-mode-font: black;
+    --dark-mode-font: white;
+    --system-theme-1: #ff5757;
+    --system-theme-2: #ff66c4;
+}
+
+/*01: Layouts*/
+div.navbar{
+    position: fixed;
+    left:0%;
+    top: 0%;
+    padding: 0;
+    width: 25%;
+    height: 100%;
+    z-index: 3;
+}
+
+div.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    left:0%;
+    padding: 10%;
+    width: 80%;
+    height: 100%;
+}
+
+div.navbar li{
+    position: relative;
+    height: 20%;
+}
+
+div.navbar button{
+    position: relative;
+    width:100%;
+    height: 60%;
+    border-radius: 10px;
+}
+
+div.goals_section{
+    position: absolute;
+    padding: 2%;
+    left: 27%;
+    width: 67%;
+    background: red;
+    z-index: 1;
+}
+
+.add_stuff{
+    position: fixed;
+    bottom: 3%;
+    right: 2%;
+}
+#add_but{
+    border-radius: 100%;
+    width: 100%;
+    height: 100%;
+    font-size: 2em;
+    text-align: center;
+}
+
+div.newgoalview{
+    position: absolute;
+    padding:2%;
+    left:25%;
+    width: 71%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px; /* spacing between rows */
+    z-index: 2;
+    
+}
+#close{
+        position: relative;
+        width:5%;
+        height: 20%;
+}
+
+.newgoalview label{
+    display: flex;
+    flex-direction:row;
+    justify-content:space-between; /* pushes text left, button right */
+    align-items: center;
+    margin: 0;
+}
+.newgoalview input{
+    width: 30%;
+    height: 30px;
+}
+#goal_add{
+    position: relative;
+    top:30%;
+    left:40%;
+}
+
+/*02: Color*/
+body{
+    background-color: var(--light-mode-background);
+}
+
+div.navbar{
+    background-color: var(--light-mode-sidebar-color);
+}
+
+div.navbar button{
+    background-color: var(--system-theme-1);
+    border-style: none;
+}
+
+div.navbar button:hover{
+    font-size: 2.2em;
+    background-color: var(--system-theme-2);
+}
+
+#placeholder{
+    background-color: #919191;
+    padding: 1%;
+    border-style: dashed;
+    border-radius: 10px;
+}
+#placeholder:hover{
+    background-color: #c0c0c0;
+}
+#placeholder:active, #add_but:active, #close:active{
+    background-color: var(--system-theme-1);
+}
+
+.newgoalview, .goals_section{
+    color: var(--light-mode-font);
+}
+
+/*03: font*/
+div.navbar button{
+    font-family: "Outfit", sans-serif;
+    font-weight: 600;
+    font-size: 2em;
+}
+
+#placeholder{
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+}
+
+.newgoalview label{
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    font-size: 3em;
+}
+
+.newgoalview h2{
+    font-family: "Pacifico", sans-serif;
+    font-weight: 500;
+    font-size: 3em;
+    text-align: center;
+}

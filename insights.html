@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="./code/css/insightDes.css">
+        <!--Styles-->
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Pacifico&display=swap');
+        </style>
+
+        <title>Insights</title>
+    </head>        
+
+    <body> 
+        <div class="navbar">
+            <ul>
+                <li><a href="index.html"><button>Home</button></a></li>
+                <li><a href="insights.html"><button>Insights</button></a></li>
+                <li><a href="transactions.html"><button>Transactions</button></a></li>
+                <li><a href="savingsGoals.html"><button>Savings Goals</button></a></li>
+                <li><a href="settings.html"><button>Settings</button></a></li>
+            </ul>
+        </div> <!--Side banner-->
+
+        <div class="ins_topbar">
+            <button id="ex_view_but">View Expenses</button>
+            <button id="inc_view_but">View Income</button>
+            <button id="print_but">Print</button>
+        </div> <!--Top Bar-->
+
+        <div class="exp_view" style="display: none;">
+            <div class="exp_chart">
+                <canvas id="expenseChart"></canvas> <!--pie chart-->
+            </div>
+
+            <hr class="dashed">
+
+            <div id="exp_info">
+                <h2>Expenses</h2>
+                <div class="scrollable-table1">
+                    <table id="exp_overview">
+                        <thead>
+                            <tr>
+                                <th>Icon</th>
+                                <th>Category</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody id="exp_overview_body">
+                            <!--info from overall expenses will be here-->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> <!--Expenses View-->
+        
+        <div class="inc_view">
+            <script>
+                $('#ex_view_but').prop('disabled', false);
+                $('#inc_view_but').prop('disabled', true);
+            </script>
+            <div class="inc_chart">
+                <canvas id="incomeChart"></canvas><!--pie chart-->
+            </div>
+
+            <hr class="dashed">
+
+            <div id="inc_info">
+                <h2>Income</h2>
+                <div class="scrollable-table2">
+                    <table id="inc_overview">
+                        <thead >
+                            <tr>
+                                <th>Icon</th>
+                                <th>Category</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inc_overview_body">
+                            <!--info from overall income will be here-->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> <!--Income View-->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="./code/javascript/theMaths.js"></script>
+        <script src="./code/javascript/decorativeScript.js"></script>
+        <script src="./code/javascript/InsightScript.js"></script>       
+
+    </body>
+</html>

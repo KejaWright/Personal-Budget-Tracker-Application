@@ -1,0 +1,300 @@
+/*style file created by us
+00: CSS Variables
+01: Layouts
+02: Color
+03: Font
+04: Nice Decoration
+*/
+
+/*00: Variables*/
+:root{
+    --light-mode-sidebar-color: #d9d9d9;
+    --dark-mode-sidebar-color: #919191;
+    --light-mode-background: rgb(255, 255, 255);
+    --dark-mode-background: #2e2e2e;
+    --light-mode-font: black;
+    --dark-mode-font: white;
+    --system-theme-1: #ff5757;
+    --system-theme-2: #ff66c4;
+}
+
+/*01: Layouts*/
+div.navbar{
+    position: fixed;
+    left:0%;
+    top: 0%;
+    padding: 0;
+    width: 25%;
+    height: 100%;
+    z-index: 3;
+}
+
+div.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    left:0%;
+    padding: 10%;
+    width: 80%;
+    height: 100%;
+}
+
+div.navbar li{
+    position: relative;
+    height: 20%;
+}
+
+div.navbar button{
+    position: relative;
+    width:100%;
+    height: 60%;
+    border-radius: 10px;
+}
+
+div.topbar{
+    display: inline-table;
+    position: fixed;
+    left:25%;
+    top:0%;
+    width:75%;
+    height: 30%;
+    z-index: 2;
+}
+
+div.topbar h3{
+    width: 20%;
+    height: auto;
+    padding: 1%;
+    border-radius: 50px;
+    text-align: center;
+}
+
+#balance{
+    position: absolute;
+    left:2%;
+}
+#income{
+    position: absolute;
+    left:40%;
+    top: 0%;
+}
+#expense{
+    position: absolute;
+    top:0%;
+    right:2%;
+}
+#total_budget_prog{
+    position: absolute;
+    left: 15%;
+    top: 45%;
+    width: 75%;
+    height: 20%;
+}
+#bud_disp{
+    position: absolute;
+    text-align: center;
+    left: 15%;
+    top:70%;
+    width: 75%;
+    font-size: 1.5em;
+}
+#budget_manip{
+    position: relative;
+    top: 85%;
+    left: 42%;
+    width:20%;
+}
+#budget_manip:hover{
+    background-color: var(--system-theme-1);
+}
+
+hr{
+    position:fixed;
+    left:25%;
+    width:75%;
+    top:30%;
+}
+
+div.incomeExpense{
+    position: absolute;
+    padding:1%;
+    left: 25%;
+    top: 30%;
+    width: 70%;
+    z-index: 1;
+}
+
+div.income_bar p, div.expenses_bar p{
+    background-color: #919191;
+    padding: 1%;
+    border-style: dashed;
+    border-radius: 10px;
+} 
+
+div.income_bar p:hover, div.expenses_bar p:hover{
+    background-color: #c0c0c0;
+}
+
+#income_table{
+    position: relative;
+    width: 100%;
+    text-align: left;
+}
+#expense_table{
+    position: relative;
+    width: 100%;
+    text-align: left;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+  }
+
+div.add_stuff{
+    position:fixed;
+    bottom: 5%;
+    right: 0%;
+    width: auto;
+    height: auto;
+    z-index: 4;
+}
+
+div.add_stuff button{
+    border-radius: 100%;
+    width: 100%;
+    height: 100%;
+    font-size: 2em;
+    text-align: center;
+}
+
+div.newTransactionView{
+    position:absolute;
+    left:25%;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 100px; /* spacing between rows */
+}
+
+#formbar h2{
+    position: relative;
+    left: 25%;
+}
+
+#submit_but{
+    position: relative;
+    left: 25%;
+    width: 50%;
+}
+
+div.newTransactionView ul {
+    list-style-type:none;
+    margin: 0;
+    left:0%;
+    width: 90%;
+    height: 100%;
+}
+
+div.newTransactionView label{
+    position: relative;
+    height: 60%;
+    display: flex;
+    justify-content: space-between; /* pushes text left, button right */
+    align-items: center;
+    margin: 0;
+}
+div.newTransactionView input{
+    position: relative;
+    width: 200px;
+    height: 30px;
+}
+
+div.newTransactionView select{
+    position: relative;
+    width: 200px;
+    height: 30px;
+}
+
+
+
+/*02: Color*/
+body{
+    background-color: var(--light-mode-background);
+}
+
+div.navbar{
+    background-color: var(--light-mode-sidebar-color);
+}
+
+div.navbar button{
+    background-color: var(--system-theme-1);
+    border-style: none;
+}
+
+div.navbar button:hover{
+    font-size: 2.2em;
+    background-color: var(--system-theme-2);
+}
+
+div.topbar{
+    background-color: rgb(225, 225, 225);
+}
+
+div.topbar h3{
+    background-color: var(--system-theme-1);
+}
+
+#total_budget_prog{
+    accent-color: var(--system-theme-1);
+}
+
+div.add_stuff button:active{
+    background-color: var(--system-theme-2);
+}
+
+th, td{
+    border-bottom: 2px solid var(--system-theme-1);
+}
+
+tr:hover {
+    background-color: var(--system-theme-2);
+}
+
+div.newTransactionView label:hover{
+    background-color: var(--system-theme-1);
+}
+
+/*03: Font*/
+div.incomeExpense, div.newTransactionView{
+    color:var(--light-mode-font);
+}
+
+div.navbar button{
+    font-family: "Outfit", sans-serif;
+    font-weight: 600;
+    font-size: 2em;
+}
+
+h2{
+    font-family: "Pacifico", sans-serif;
+    font-weight: 400;
+    font-size: 3em;
+}
+
+#income_table, #expense_table, p{
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    th{
+        font-weight: 900;
+    }
+    button:hover{
+        background-color: var(--system-theme-1);
+    }
+}
+
+form{
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    font-size: 2em;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="./code/css/settingsDes.css">
+        <!--Styles-->
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Pacifico&display=swap');
+        </style>
+
+        <title>Settings</title>
+    </head>
+    <body> 
+        <div class="navbar">
+            <ul>
+                <li><a href="index.html"><button>Home</button></a></li>
+                <li><a href="insights.html"><button>Insights</button></a></li>
+                <li><a href="transactions.html"><button>Transactions</button></a></li>
+                <li><a href="savingsGoals.html"><button>Savings Goals</button></a></li>
+                <li><a href="settings.html"><button>Settings</button></a></li>
+            </ul>
+        </div> <!--Side banner-->
+
+        <div class="dark_mode_sec">
+            <h3>Dark Mode<span><input type="checkbox" id="dark_mode" value="yes"></span></h3>
+            <h3>System Theme<span><input type="color" id="main_color"><input type="color" id="acc_color"></span></h3>
+            <button onclick="applyColorChange()">Save Changes</button>
+            <button onclick="resetColorSettings()">Reset Color Settings</button>
+        </div> <!--Color Mode-->
+        
+        <div class="clear_sec">
+            <h3>Clear All Expenses<span><button id="clear_exp" onclick="clearData('expense')">DELETE</button></span></h3>
+            <h3>Clear All Income<span><button id="clear_inc" onclick="clearData('income')">DELETE</button></span></h3>
+            <h3>Clear All Goals<span><button id="clear_goals" >DELETE</button></span></h3>
+        </div> <!--Clearing Section-->
+        <script src="./code/javascript/theMaths.js"></script>
+        <script src="./code/javascript/decorativeScript.js"></script>
+        <script src="./code/javascript/editTableScript.js"></script>
+    </body>
+</html>
