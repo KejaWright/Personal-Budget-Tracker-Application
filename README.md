@@ -40,4 +40,6 @@ All devices support the web version of this app. The web version does not use a 
 12) (2025/4/20)-Updated UI of settings.html so that it is easier to read.
 13) (2025/4/20)-Balance, Income, Expense, and Budget can now be seem correctly; Budget can now be changed and updated.
 14) (2025/4/20)-Added a search bar and clear search button in transactions.html.
-15) (2024/4/21)-Page refuses to reload when transaction is added to either of the charts.
+15) (2025/4/21)-Page refuses to reload when transaction is added to either of the charts.
+16) (2025/4/26)-Home and Transaction Pages now reloads when row is added to a table.
+17) (2025/4/26)-Sort by type and sort by category are now an option on the transactions page.

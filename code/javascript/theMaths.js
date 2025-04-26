@@ -45,22 +45,24 @@ document.querySelector("form").addEventListener("submit", function(e) {
     localStorage.setItem("transactions", JSON.stringify(transactions));
 
     // Add the transaction to both the income and expense tables if applicable
+    window.location.reload();
+    console.log("Type of transaction:", type);
     if (type === 'income') {
         addTransactionToTable("income_table_body", date, type, cat_icon_img, category, title, repeating, acc_type, paid, amount, id);
-        window.location.reload();
-
+        console.log("reloading");
     }
+    window.location.reload();
 
     if (type === 'expense') {
         addTransactionToTable("expense_table_body", date, type, cat_icon_img, category, title, repeating, acc_type, paid, amount, id);
-        window.location.reload();
     }
+    window.location.reload();
 
     // Always add the transaction to the general transaction table as well
     addTransactionToTable("transactionTableBody", date, type, cat_icon_img, category, title, repeating, acc_type, paid, amount, id);
+    console.log("reloading");
+
     window.location.reload();
-
-
 });
 
 // Function to add transaction to a table
@@ -86,6 +88,7 @@ function addTransactionToTable(tableId, date, type, cat_icon_img, category, titl
         <td><button onclick="editRow(this, '${tableId}')">Edit</button></td>
         <td><button onclick="deleteRow(this, '${tableId}')">Delete</button></td>
     `;
+    window.location.reload();
 }
 
 // Display transactions when each page loads
@@ -142,6 +145,24 @@ function sortTransactionsByAmount() {
     const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
     
     transactions.sort((a, b) => parseFloat(a.amount) - parseFloat(b.amount));
+    displaySortedTransactions("transactionTableBody", transactions);
+}
+
+function sortTransactionsByType(){
+    const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+    transactions.sort((a, b) => {
+        if (a.type === 'income' && b.type !== 'income') return -1; // 'income' first
+        if (a.type !== 'income' && b.type === 'income') return 1;
+        return 0; // Keep original order if both are the same type
+    });
+    displaySortedTransactions("transactionTableBody", transactions);
+}
+
+function sortTransactionsByCategory(){
+    const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+    transactions.sort((a, b) => {
+        return a.category.localeCompare(b.category); // Sort alphabetically by category
+    });
     displaySortedTransactions("transactionTableBody", transactions);
 }
 
