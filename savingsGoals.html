@@ -22,32 +22,36 @@
             </ul>
         </div> <!--Side banner-->
 
-        <div class="goals_section">
-            <h3 id="placeholder">No Goals Yet...Add Them Here</h3>
+        <h3 id="placeholder">No Goals Yet...Add Them Here</h3>
+
+        <div id="goals_section">
             <script>
                 $('#placeholder').click(function(){
-                    $('.goals_section').toggle();
+                    $('#placeholder').toggle();
+                    $('#goals_section').toggle();
                     $('.newgoalview').toggle();
                 });
             </script>
             <!--Add goals here; should be a section with a table-->
-
-            <div class="add_stuff">
-                <button id="add_but">+</button>
-                <script>
-                    $('#add_but').click(function(){
-                        $('.goals_section').toggle();
-                        $('.newgoalview').toggle();
-                    });
-                </script>
-            </div><!--Add Goals--> 
         </div><!--Saving Goals Area-->
+
+        <div class="add_stuff">
+            <button id="add_but">+</button>
+            <script>
+                $('#add_but').click(function(){
+                    $('#placeholder').toggle();
+                    $('#goals_section').toggle();
+                    $('.newgoalview').toggle();
+                });
+            </script>
+        </div><!--Add Goals--> 
 
         <div class="newgoalview" style="display: none;">
             <button id="close">x</button>
             <script>
                 $('#close').click(function(){
-                    $('.goals_section').toggle();
+                    $('#placeholder').toggle();
+                    $('#goals_section').toggle();
                     $('.newgoalview').toggle();
                 });
             </script>

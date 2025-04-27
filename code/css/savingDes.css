@@ -50,13 +50,24 @@ div.navbar button{
     border-radius: 10px;
 }
 
-div.goals_section{
+#placeholder{
+    position: relative;
+    padding: 2%;
+    left: 27%;
+    width: 67%;
+    z-index: 1;
+}
+
+#goals_section{
     position: absolute;
     padding: 2%;
     left: 27%;
     width: 67%;
-    background: red;
     z-index: 1;
+}
+
+#goals_section th, td{
+    text-align: left;
 }
 
 .add_stuff{
@@ -139,7 +150,23 @@ div.navbar button:hover{
     background-color: var(--system-theme-1);
 }
 
-.newgoalview, .goals_section{
+table{
+    width: 100%;
+    padding: 30px 12px;
+}
+th, td{
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--system-theme-1);
+}
+tr:hover {
+    background-color: var(--system-theme-2);
+}
+
+#goals_section button:active{
+    background-color: var(--system-theme-1);
+}
+
+.newgoalview, #goals_section{
     color: var(--light-mode-font);
 }
 
@@ -166,4 +193,16 @@ div.navbar button{
     font-weight: 500;
     font-size: 3em;
     text-align: center;
+}
+
+th{
+    font-family: "Pacifico", sans-serif;
+    font-weight: 500;
+    font-size: 3em;
+    text-align: center;
+}
+td{
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    font-size: 3em;
 }

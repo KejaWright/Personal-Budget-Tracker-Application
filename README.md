@@ -43,3 +43,5 @@ All devices support the web version of this app. The web version does not use a 
 15) (2025/4/21)-Page refuses to reload when transaction is added to either of the charts.
 16) (2025/4/26)-Home and Transaction Pages now reloads when row is added to a table.
 17) (2025/4/26)-Sort by type and sort by category are now an option on the transactions page.
+18) (2025/4/27)-Updated the Savings Goals page so that users can make a list of goals to save for.
+19) (2025/4/27)-Updated the "Clear All Goals" button on the settings page so that it deletes all goals.

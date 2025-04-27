@@ -1,132 +1,211 @@
-//create a savings goals and save to loacl storage
+//Read information from the sumbitted form and push to a created table
 document.querySelector("form").addEventListener("submit", function(e) {
     e.preventDefault();
-
-    //create variables for the goals
-    const goalCategory = document.getElementById("goal_cat").value.trim();
+    const goalCat = document.getElementById("goal_cat").value.trim().toLowerCase();
     const goalName = document.getElementById("goal_name").value.trim();
     const goalAmount = document.getElementById("goal_am").value.trim();
-
     const id = Date.now(); // Simple unique ID
+    
     const savingGoals = JSON.parse(localStorage.getItem("savingGoals")) || [];
 
-    //add to localStorage
-    savingGoals.push({id, goalCategory, goalName, goalAmount})
+    // Append the new transaction to the array
+    savingGoals.push({ id, goalCat, goalName, goalAmount});
+
+    // Save the updated transactions back to localStorage
     localStorage.setItem("savingGoals", JSON.stringify(savingGoals));
 
-    const categoryTable = document.querySelector(`table[data-category="${goalCategory}"]`);//does category exist already?
+    window.location.reload();
 
-    if (categoryTable){
-        newGoal(categoryTablele, id, goalName, goalAmount);
-        window.location.reload();
-    }
-
-    else{
-        newCategory(id, goalCategory, goalName, goalAmount);
-        window.location.reload();
+    //add category to list
+    if (document.getElementById(goalCat)) {
+        addToExistingTable(goalCat, goalName, goalAmount, id);
+    } 
+    
+    else {
+        newGoal(goalCat, goalName, goalAmount, id);
     }
 });
 
-function newCategory(id, categoryName, goalName, goalAmount){
-    const container = document.getElementById("goals_section");
+//if new goal category is created:
+function newGoal(goalCat, goalName, goalAmount, id){
+    const table = document.createElement('table');
+    table.id = goalCat;
 
-    const section = document.createElement("section");
-  
-    const table = document.createElement("table");
-    table.setAttribute("data-category", categoryName);
-  
-    const thead = document.createElement("thead");
-    const headerRow = document.createElement("tr");
-    const headerCell = document.createElement("th");
-    headerCell.colSpan = 2;
-    headerCell.textContent = `Category (${categoryName})`;
+    const thead = document.createElement('thead');
+    const headerRow = thead.insertRow();
+    const headerCell = document.createElement('th');
+    headerCell.colSpan = 4;
+    headerCell.textContent = goalCat;
     headerRow.appendChild(headerCell);
-    thead.appendChild(headerRow);
-  
-    const tbody = document.createElement("tbody");
+
+    const tbody = document.createElement('tbody');
     table.appendChild(thead);
     table.appendChild(tbody);
-  
-    section.appendChild(table);
-    container.appendChild(section);
-  
-    newGoal(table, id, goalName, goalAmount);
-  
+
+    headerRow.innerHTML = `
+        <th colspan="3">${goalCat.charAt(0).toUpperCase() + goalCat.slice(1)}</th>
+        <th><button onclick="deleteTable('${goalCat}')">Delete Table</button></th>
+    `;
+
+
+    const row = table.querySelector('tbody').insertRow();
+    row.dataset.id = id; //This sets a data attribute on the row
+    row.innerHTML = `
+        <td>${goalName}</td>
+        <td>$${goalAmount}</td>
+        <td><button onclick="editRow(this, '${goalCat}')">Edit</button></td>
+        <td><button onclick="deleteRow(this, '${goalCat}')">Delete</button></td>
+    `;
+
+    // Append table to container
+    document.getElementById("goals_section").appendChild(table);
+    console.log("Table rows inserted");
 }
 
-function newGoal(table, id, goalName, goalAmount){
-    const tbody = table.querySelector("tbody");
-    const lastRow = tbody.lastElementChild;
-    
-    let row;
-    if (!lastRow || lastRow.children.length === 2) {
-      row = document.createElement("tr");
-      tbody.appendChild(row);
-    } else {
-      row = lastRow;
+//if already existing category is used:
+function addToExistingTable(goalCat, goalName, goalAmount, id){
+    const table = document.getElementById(goalCat);
+    if (!table) {
+        console.warn(`Table with ID '${goalCat}' not found.`);
+        return;
     }
-  
-    const td = document.createElement("td");
-  
-    const box = document.createElement("div");
-    box.className = "goal-box";
-    box.setAttribute("data-id", id);
-  
-    const name = document.createElement("h3");
-    name.textContent = goalName;
-  
-    const amount = document.createElement("p");
-    amount.textContent = `$0/${goalAmount}`;
-  
-    const addBtn = document.createElement("button");
-    addBtn.textContent = "Add";
-  
-    const editBtn = document.createElement("button");
-    editBtn.textContent = "Edit";
-  
-    const delBtn = document.createElement("button");
-    delBtn.textContent = "Delete";
-  
-    box.appendChild(name);
-    box.appendChild(amount);
-    box.appendChild(addBtn);
-    box.appendChild(editBtn);
-    box.appendChild(delBtn);
-  
-    td.appendChild(box);
-    row.appendChild(td);
+
+    const tbody = table.querySelector('tbody');
+    const row = tbody.insertRow();
+    row.dataset.id = id; //This sets a data attribute on the row
+
+    row.innerHTML = `
+        <td>${goalName}</td>
+        <td>$${goalAmount}</td>
+        <td><button onclick="editRow(this, '${goalCat}')">Edit</button></td>
+        <td><button onclick="deleteRow(this, '${goalCat}')">Delete</button></td>
+    `;
 }
-  
-// Rebuild goals from localStorage when page loads
-window.addEventListener("DOMContentLoaded", () => {
+
+
+//delete entire table:
+function deleteTable(goalCat) {
+    if (!confirm(`Are you sure you want to delete the entire "${goalCat}" table?`)) {
+        return; // Cancel if user says no
+    }
+
+    // Normalize the input
+    const normalizedGoalCat = goalCat.trim().toLowerCase();
+
+    // Remove from localStorage
+    let savingGoals = JSON.parse(localStorage.getItem("savingGoals")) || [];
+    savingGoals = savingGoals.filter(goal => goal.goalCat.trim().toLowerCase() !== normalizedGoalCat);
+    localStorage.setItem("savingGoals", JSON.stringify(savingGoals));
+
+    // Remove the table from the page
+    const table = document.getElementById(normalizedGoalCat);
+    if (table) {
+        table.remove();
+    }
+
+    // Reload to rebuild page with updated localStorage
+    window.location.reload();
+}
+
+//delete row slected in table
+function deleteRow(button, tableCat){
+    const row = button.closest('tr'); // Get the row containing the button
+    const table = document.getElementById(tableCat);
+    const id = row.dataset.id;
+
+    row.remove();
+
+    const savingGoals = JSON.parse(localStorage.getItem("savingGoals")) || [];
+    const updatedgoals = savingGoals.filter(tx => tx.id != id);
+    localStorage.setItem("savingGoals", JSON.stringify(updatedgoals));
+
+    console.log(`Row deleted from ${tableCat}`);
+}
+
+function deleteAllTables(){
+    if (confirm(`Are you sure you want to delete ALL savings goals? This cannot be undone.`)) {
+        // Clear from localStorage
+        localStorage.removeItem("savingGoals");
+
+        // Remove all tables inside goals_section
+        $('#goals_section table').remove();
+
+        // Update placeholder visibility
+        updateGoalSectionVisibility();
+
+        alert(`All savings goals have been deleted.`);
+    }
+}
+
+
+//edit selected row
+function editRow(button, goalCat){
+    const row = button.closest('tr');
+    const cells = row.children;
+
+    cells[0].innerHTML = `<input type="text" value="${cells[0].textContent}">`;
+    cells[1].innerHTML = `<input type="number" value="${parseFloat(cells[1].textContent.replace('$', ''))}" step="0.01">`;
+
+    button.textContent = "Add";
+    button.onclick = () => saveEditedRow(button, goalCat, row.dataset.id);
+}
+
+//save the edited row
+function saveEditedRow(button, goalCat, id) {
+    if (!confirm("Are you sure you want to save changes to this transaction?")) return;
+    const row = button.closest('tr');
+    const cells = row.children;
+
+    // Get updated values
+    const goalName = cells[0].querySelector('input').value;
+    const goalAmount = parseFloat(cells[1].querySelector('input').value).toFixed(2);
+
+    // Replace with plain text again
+    row.innerHTML = `
+        <td>${goalName}</td>
+        <td>$${goalAmount}</td>
+        <td><button onclick="editRow(this, '${goalCat}')">Edit</button></td>
+        <td><button onclick="deleteRow(this, '${goalCat}')">Delete</button></td>
+    `;
+
+    // Update main transactions list
+    const savingGoals = JSON.parse(localStorage.getItem("savingGoals")) || [];
+    const index = savingGoals.findIndex(tx => tx.id == id);
+    if (index !== -1) {
+        savingGoals[index] = {
+            id,
+            goalCat, 
+            goalName, 
+            goalAmount
+        };
+        localStorage.setItem("savingGoals", JSON.stringify(savingGoals));
+    }
+}
+
+//hide h3 element if there are tables present
+function updateGoalSectionVisibility() {
+    if ($('#goals_section table').length === 0) {
+        $('#placeholder').show();  // Show h3 if no tables
+    } else {
+        $('#placeholder').hide();  // Hide h3 if tables exist
+    }
+}
+
+// Run it on page load
+$(document).ready(function () {
+    updateGoalSectionVisibility();
+});
+
+//actually display the tables
+window.addEventListener("DOMContentLoaded", function() {
     const savingGoals = JSON.parse(localStorage.getItem("savingGoals")) || [];
 
-    const categoryMap = {};
-
     savingGoals.forEach(goal => {
-        if (!categoryMap[goal.goalCategory]) {
-        categoryMap[goal.goalCategory] = document.createElement("table");
-        categoryMap[goal.goalCategory].setAttribute("data-category", goal.goalCategory);
-
-        const thead = document.createElement("thead");
-        const headerRow = document.createElement("tr");
-        const headerCell = document.createElement("th");
-        headerCell.colSpan = 2;
-        headerCell.textContent = `Category (${goal.goalCategory})`;
-        headerRow.appendChild(headerCell);
-        thead.appendChild(headerRow);
-
-        const tbody = document.createElement("tbody");
-
-        categoryMap[goal.goalCategory].appendChild(thead);
-        categoryMap[goal.goalCategory].appendChild(tbody);
-
-        const section = document.createElement("section");
-        section.appendChild(categoryMap[goal.goalCategory]);
-
-        document.getElementById("goals_section").appendChild(section);
+        const normalizedCat = goal.goalCat.toLowerCase(); // normalize
+        if (document.getElementById(normalizedCat)) {
+            addToExistingTable(normalizedCat, goal.goalName, goal.goalAmount, goal.id);
+        } else {
+            newGoal(normalizedCat, goal.goalName, goal.goalAmount, goal.id);
         }
-
-        newGoal(categoryMap[goal.goalCategory], goal.id, goal.goalName, goal.goalAmount);
     });
 });
